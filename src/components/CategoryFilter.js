@@ -7,6 +7,7 @@ function CategoryFilter({ categories }) {
 
   function handleClick(e){
     console.log(e.target)
+    setSelectedCategory(e.target.value)
   }
 
   const categoryCollection = categories.map(category => {
