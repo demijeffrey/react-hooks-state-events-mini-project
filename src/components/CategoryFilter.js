@@ -3,12 +3,13 @@ import React, { useState } from "react";
 function CategoryFilter({ categories }) {
 
   console.log(categories)
-  const [selectedCategory, setSelectedCategory] = useState('All')
+  const [selectedCategory, setSelectedCategory] = useState('')
 
   function handleClick(e){
     console.log(e.target)
     setSelectedCategory(e.target.value)
   }
+  console.log(selectedCategory)
 
   const categoryCollection = categories.map(category => {
     // console.log(category)
