@@ -7,12 +7,11 @@ function CategoryFilter({ categories }) {
 
   function handleClick(e){
     console.log(e.target)
-    e.target.className = 'selected'
   }
-  let a = selectedCategory === category ? 'selected' : ''
 
   const categoryCollection = categories.map(category => {
     // console.log(category)
+    let a = selectedCategory === category ? 'selected' : ''
     return <button key={category} className={a} value={selectedCategory} onClick={handleClick}>{category}</button>
   })
 
