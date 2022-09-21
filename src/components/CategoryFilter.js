@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 function CategoryFilter({ categories }) {
 
   console.log(categories)
+  const [selectedCategory, setSelectedCategory] = useState('All')
 
   function handleClick(e){
     console.log(e.target)
