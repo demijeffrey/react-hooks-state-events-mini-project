@@ -9,10 +9,11 @@ function CategoryFilter({ categories }) {
     console.log(e.target)
     e.target.className = 'selected'
   }
+  let a = selectedCategory === category ? 'selected' : ''
 
   const categoryCollection = categories.map(category => {
     // console.log(category)
-    return <button key={category} className="" onClick={handleClick}>{category}</button>
+    return <button key={category} className={a} value={selectedCategory} onClick={handleClick}>{category}</button>
   })
 
   return (
