@@ -9,19 +9,34 @@ console.log({ CATEGORIES, TASKS });
 
 function App() {
 
-  // const [tasks, setTasks] = useState(tasks)
-  // function handleClick(e){
-  //   console.log(e.target)
-  //   e.target.className = 'selected'
-  //   setTasks(tasks.filter(task => e.target.value === task.category))
-  // }
+  const [selectedCategory, setSelectedCategory] = useState('All')
+  const [tasks, setTasks] = useState(TASKS)
+
+  //filter through tasks, check category of each task, if === selectedCategory => task
+  const filterTasks = tasks.filter(task => {
+    if (selectedCategory === 'All') return tasks
+    return task.category === selectedCategory
+  })
+
+  function onTaskFormSubmit(newTask) {
+    console.log(newTask)
+    setTasks([...tasks, newTask])
+  }
+
+  function deleteTask(taskToRemove) {
+    const newTaskCollection = tasks.filter(task => {
+      if(task.text !== taskToRemove.text) return task
+    })
+    console.log(taskToRemove)
+    setTasks(newTaskCollection)
+  }
 
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter categories={CATEGORIES} />
-      <NewTaskForm />
-      <TaskList tasks={TASKS} />
+      <CategoryFilter categories={CATEGORIES} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+      <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={onTaskFormSubmit} />
+      <TaskList tasks={filterTasks} deleteTask={deleteTask} />
     </div>
   );
 }
